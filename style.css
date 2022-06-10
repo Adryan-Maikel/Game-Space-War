@@ -18,3 +18,27 @@ body{
     height: 621px;
     display: none;
 }
+#medidorPlaneta{
+    border: 2px solid black;
+    width: 300px;
+    height: 20px;
+    background-color: white;
+}
+#barraPlaneta{
+    width: 300px;
+    height: 20px;
+    background-color: green;
+}
+.tiroJog{
+    width: 6px;
+    height: 6px;
+    background-color: black;
+    border-radius: 6px;
+    position: absolute;
+}
+.bomb{
+    width: 24px;
+    height: 40px;
+    background-image: url(bomba.gif);
+    position: absolute;
+}
