@@ -6,6 +6,7 @@ var frames;
 var contBombs, painelContBombs, timeCreatBomb;
 var bombsTotal, velB;
 var lifePlanet;
+var ie, isom;
 
 function teclaDw(){
 	var tecla=event.keyCode;
@@ -59,6 +60,7 @@ function controleBombs(){
             bombsTotal[i].style.top=pi+"px";
             if(pi>tamTelaH){
                 lifePlanet-=10;
+                criaExplosao(2,bombsTotal[i].offsetLeft,null);
                 bombsTotal[i].remove();
             }
         }
@@ -103,11 +105,55 @@ function colisaoTiroBomba(tiro){
             ((tiro.offsetLeft<=(bombsTotal[i].offsetLeft+24))
             &&
             ((tiro.offsetLeft+6)>=(bombsTotal[i].offsetLeft)))){
+                criaExplosao(1,bombsTotal[i].offsetLeft-25,bombsTotal[i].offsetTop);
                 bombsTotal[i].remove();
                 tiro.remove();
             }
         }
     }
+}
+
+function criaExplosao(tipo,x,y){//tipo==1 é ar e 2 chao
+    if(document.getElementById("explosao"+(ie-5))){
+        document.getElementById("explosao"+(ie-5)).remove();
+    }
+    var explosao=document.createElement("div");
+    var img=document.createElement("img");
+    var som=document.createElement("audio");
+    //atributos para div
+    var att1=document.createAttribute("class");
+    var att2=document.createAttribute("style");
+    var att3=document.createAttribute("id");
+    //atributos para imagem
+    var att4=document.createAttribute("src");
+    //atributos para audio
+    var att5=document.createAttribute("src");
+    var att6=document.createAttribute("id");
+
+    att3.value="explosao"+ie;
+    if(tipo==1){
+        att1.value="explosaoAr";
+        att2.value="top:"+y+"px;left:"+x+"px;";
+        att4.value="explosao_ar.gif?"+new Date();
+    }else{
+        att1.value="explosaoChao";
+        att2.value="top:"+(tamTelaH-57)+"px;left:"+(x-17)+"px;";
+        att4.value="explosao_chao.gif?"+new Date();
+    }
+    att5.value="explosao.mp3?"+new Date();
+    att6.value="som"+isom;
+    explosao.setAttributeNode(att1);
+    explosao.setAttributeNode(att2);
+    explosao.setAttributeNode(att3);
+    img.setAttributeNode(att4);
+    som.setAttributeNode(att5);
+    som.setAttributeNode(att6);
+    explosao.appendChild(img);
+    explosao.appendChild(som);
+    document.body.appendChild(explosao);
+    document.getElementById("som"+isom).play();
+    ie++;
+    isom++;
 }
 
 function controleJogador(){
@@ -153,6 +199,8 @@ function inicia(){
     //inicialização do planeta
     lifePlanet=300;
 
+    //controle de explosao
+    ie=isom=0;
     gameLoop();
 }
 
