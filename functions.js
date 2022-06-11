@@ -33,7 +33,7 @@ function teclaUp(){
 		dirxJ=0;
 	}
 }
-
+//teste
 function creatBomb(){
     if(jogo){
         var y=0;
