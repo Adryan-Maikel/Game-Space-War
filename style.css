@@ -3,6 +3,14 @@ body{
     overflow-y: hidden;
     background-color: white;
 }
+#game{
+    height: 900px;
+    width: 650px;
+    border: 2px solid black;
+    background-image: url(background.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
 .navJog{
     width: 40px;
     height: 40px;
@@ -32,7 +40,7 @@ body{
 .tiroJog{
     width: 6px;
     height: 6px;
-    background-color: black;
+    background-color: yellow;
     border-radius: 6px;
     position: absolute;
 }

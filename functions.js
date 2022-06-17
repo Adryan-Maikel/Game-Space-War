@@ -33,7 +33,7 @@ function teclaUp(){
 		dirxJ=0;
 	}
 }
-//teste
+
 function creatBomb(){
     if(jogo){
         var y=0;
@@ -58,7 +58,7 @@ function controleBombs(){
             var pi=bombsTotal[i].offsetTop;
             pi+=velB;
             bombsTotal[i].style.top=pi+"px";
-            if(pi>tamTelaH){
+            if(pi>tamTelaH-20){
                 lifePlanet-=10;
                 criaExplosao(2,bombsTotal[i].offsetLeft,null);
                 bombsTotal[i].remove();
@@ -178,8 +178,8 @@ function inicia(){
     jogo = true;
 
     //inicialização da tela
-    tamTelaH=window.innerHeight;
-    tamTelaW=window.innerWidth;
+    tamTelaH=document.getElementById("game").clientHeight;
+    tamTelaW=document.getElementById("game").clientWidth;
 
     //inicialização do jogador
     dirxJ=diryJ=0
